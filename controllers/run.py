@@ -42,3 +42,35 @@ def check_shot(board, row, col):
     else:
         print("Miss!")
         return False
+
+
+# Main game loop
+def play_game():
+    board = create_board()
+    place_battleships(board)
+
+    for attempt in range(1, NUM_ATTEMPTS + 1):
+        display_board(board)
+        try:
+            row = int(input(f"Attempt {attempt}: Enter the row (0-{BOARD_SIZE-1}): "))
+            col = int(input(f"Attempt {attempt}: Enter the column (0-{BOARD_SIZE-1}): "))
+            if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
+                raise ValueError
+        except ValueError:
+            print("Invalid input. Please enter valid row and column coordinates.")
+            continue
+
+        if check_shot(board, row, col):
+            if all(all(cell != 'B' for cell in row) for row in board):
+                print("Congratulations! You sank all the Battleships!")
+                break
+        else:
+            print("Try again!")
+
+    else:
+        print("Game Over! You ran out of attempts.")
+
+        # Run the game
+if __name__ == "__main__":
+    play_game()
+
