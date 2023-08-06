@@ -1,31 +1,73 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+README = """
+# Battleship Game in Python
 
-Welcome USER_NAME,
+A simple text-based Battleship game implemented in Python.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## Table of Contents
 
-## Reminders
+- [Installation](#installation)
+- [Usage](#usage)
+- [Game Features](#game-features)
+- [Screenshots](#screenshots)
+- [Code Structure](#code-structure)
+- [Known Issues and Limitations](#known-issues-and-limitations)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Credits](#credits)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Installation
 
-## Creating the Heroku app
+1. Clone the repository: git clone https://github.com/vendelaswenson/portfolio3.git
+2. Change into the project directory: cd portfolio3
+3. Run the game: python3 run.py
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Usage
 
-1. `heroku/python`
-2. `heroku/nodejs`
+1. The game board will be displayed, and you will be prompted to enter row and column coordinates to fire at a cell on the board.
+2. Follow the instructions on the screen to guess the location of the hidden battleships and try to sink them all.
+3. You have a limited number of attempts to complete the game.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Game Features
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- Randomly placed battleships on the game board.
+- Simple and intuitive text-based interface.
+- Limited number of attempts to keep the game challenging.
 
-Connect your GitHub repository and deploy as normal.
+## Screenshots
+[Link Text](./views/battleship.pdf)
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Code Structure
 
------
-Happy coding!
+The code is organized into several functions to handle different aspects of the game.
+
+- `create_board()`: Initializes the game board with empty cells.
+- `place_battleships(board)`: Randomly places the battleships on the board.
+- `display_board(board)`: Displays the game board to the player.
+- `check_shot(board, row, col)`: Checks if the player's shot hits a battleship.
+- `play_game()`: Main game loop to run the game.
+
+## Known Issues and Limitations
+
+- The game does not support customization of board size or number of battleships at this time.
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For questions or feedback, you can reach out to the project maintainer at vendelaswenson@outlook.com.
+
+## Credits
+
+- The Battleship game idea and rules were inspired by the classic Battleship board game.
+- Special thanks to the Python community and contributors for their support.
+"""
+
+
