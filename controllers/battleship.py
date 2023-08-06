@@ -1,5 +1,6 @@
 import random
-
+import sys
+import os
 # Constants
 BOARD_SIZE = 5
 NUM_BATTLESHIPS = 3
@@ -20,6 +21,7 @@ def place_battleships(board):
                 break
 
 
+
 # Function to display the game board
 def display_board(board):
     print("\n  ", end="")
@@ -35,14 +37,50 @@ def display_board(board):
 
 # Function to check if the shot hit a Battleship
 def check_shot(board, row, col):
-    if board[row][col] == 'B':
+    if board[col][row] == 'B':  # Corrected order for accessing the board
         print("Hit!")
-        board[row][col] = 'X'
+        board[col][row] = 'X'
         return True
     else:
         print("Miss!")
         return False
 
+
+# ...
+
+
+
+# ...
+
+
+
+
+
+# ...
+
+# Function to flush input buffer
+def flush_input():
+    try:
+        import termios
+        termios.tcflush(sys.stdin, termios.TCIOFLUSH)
+    except ImportError:
+        # For Windows, try another approach
+        import msvcrt
+        while msvcrt.kbhit():
+            msvcrt.getch()
+
+
+
+# Function to get valid integer input
+def get_valid_integer(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
+# ...
 
 # Main game loop
 def play_game():
@@ -51,13 +89,12 @@ def play_game():
 
     for attempt in range(1, NUM_ATTEMPTS + 1):
         display_board(board)
-        try:
-            row = int(input(f"Attempt {attempt}: Enter the row (0-{BOARD_SIZE-1}): "))
-            col = int(input(f"Attempt {attempt}: Enter the column (0-{BOARD_SIZE-1}): "))
-            if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
-                raise ValueError
-        except ValueError:
+        row = get_valid_integer(f"Attempt {attempt}: Enter the row (0-{BOARD_SIZE-1}): ")
+        col = get_valid_integer(f"Attempt {attempt}: Enter the column (0-{BOARD_SIZE-1}): ")
+
+        if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
             print("Invalid input. Please enter valid row and column coordinates.")
+            os.system('read -p "Press Enter to continue..."')  # Wait for user to press Enter
             continue
 
         if check_shot(board, row, col):
@@ -69,6 +106,11 @@ def play_game():
 
     else:
         print("Game Over! You ran out of attempts.")
+
+# ...
+
+
+# ...
 
         # Run the game
 if __name__ == "__main__":
