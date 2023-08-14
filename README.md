@@ -1,7 +1,31 @@
 README = """
 # Battleship Game in Python
 
-A simple text-based Battleship game implemented in Python.
+The Battleship game is a classic two-player strategy game that simulates naval warfare. Players engage in a thrilling battle of wits as they strategically deploy their fleet of ships and attempt to sink their opponent's ships before their own fleet is destroyed. The game offers a mix of luck and skill, requiring players to deduce the locations of their opponent's hidden ships while protecting their own.
+
+* Purpose of the Game
+
+The primary purpose of the Battleship game is to provide an engaging and competitive experience for players. It challenges their logical thinking, deduction skills, and decision-making abilities. Players must use strategy and intuition to make informed guesses about their opponent's ship placements while avoiding detection themselves. The game promotes critical thinking, spatial reasoning, and anticipation, making it an excellent source of entertainment that can be enjoyed by people of all ages.
+
+* Key Functions and Mechanics
+
+Ship Placement: Players begin by placing their ships on a grid, usually represented by rows and columns. The ships can be positioned vertically or horizontally, and their sizes may vary.
+
+Guessing Opponent's Ships: Players take turns guessing the coordinates on the opponent's grid to target their ships. The opponent responds with "hit" or "miss," indicating whether the guessed location contains a ship.
+
+Announcing Hits and Misses: When a player scores a hit, they get an additional turn to make another guess. If a player's guess is a miss, the turn goes to the opponent.
+
+Winning Conditions: The game continues until one player's entire fleet is sunk. The player who sinks all of their opponent's ships first wins the game.
+
+Hidden Grids: Each player has two grids: one for placing their ships (hidden from the opponent) and another to track their guesses about the opponent's fleet.
+
+Strategy and Deduction: Players use a combination of logic and deduction to narrow down possible ship locations based on previous guesses and hits.
+
+Variations and Adaptations: The game can be adapted for different settings and variations. For example, larger grids, additional ship types, and special abilities can add complexity and excitement to the gameplay.
+
+Digital Versions: While the physical board game involves paper and pencil, digital versions of Battleship have become popular. These versions often include graphics, animations, and multiplayer options.
+
+The Battleship game remains a timeless classic that has entertained generations of players. Its blend of tactical thinking, suspenseful gameplay, and the thrill of competition make it an enduring favorite in the world of strategy games. Whether played on paper or in digital format, Battleship continues to captivate players and challenge their strategic minds.
 
 ## Table of Contents
 
@@ -36,6 +60,14 @@ A simple text-based Battleship game implemented in Python.
 
 ## Screenshots
 [Link Text](./views/battleship.pdf)
+
+## Testing
+I tested that the game works and you can get a hit and a miss
+I tested that you can win
+I tested so it doesn't work to put in invalid input
+
+## Bugs
+I had a problem getting the function play_game to work, I only got misses so I had to try different functions before it worked
 
 
 ## Code Structure
