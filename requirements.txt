@@ -1,1 +1,3 @@
 # Your requirements go here
+
+Flask==2.0.1

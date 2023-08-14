@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px); /* Adjust the width of columns */
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+.guess-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.result {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to battleship game!</h1>
+    <div class="container">
+        {% for row in grid %}
+            <div class="row">
+                {% for col in row %}
+                    <button class="guess-button" data-row="{{ loop.index0 }}" data-col="{{ loop.index }}"></button>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    
+    
+    <p class="result"></p>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const guessButtons = document.querySelectorAll('.guess-button');
+    const resultElement = document.querySelector('.result');
+
+    guessButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const row = button.getAttribute('data-row');
+            const col = button.getAttribute('data-col');
+
+            const response = await fetch('/guess', {
+                method: 'POST',
+                body: new URLSearchParams({ row, col }),
+            });
+
+            const result = await response.json();
+            
+            if (result.hit) {
+                resultElement.textContent = 'Hit!';
+                button.style.backgroundColor = 'green';
+            } else {
+                resultElement.textContent = 'Miss!';
+                button.style.backgroundColor = 'red';
+            }
+            
+            button.disabled = true; // Disable the button after a guess
+        });
+    });
+});
+
+    </script>
+    
+    
+</body>
+</html>
